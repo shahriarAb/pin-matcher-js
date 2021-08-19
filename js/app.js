@@ -11,6 +11,7 @@ function sixDigitPin() {
 function generatePin() {
     const pin = sixDigitPin();
     document.getElementById('display-pin').value = pin;
+    document.getElementById('screen').value = '';
 }
 document.getElementById('key-pad').addEventListener('click', function (e) {
     const screen = document.getElementById('screen');
@@ -41,10 +42,8 @@ function submitBtn() {
         correctPin.style.display = 'none';
         wrongPin.style.display = 'block';
         const tryLeft = document.getElementById('try-left');
-        if (tryLeft.innerText > 0) {
-            tryLeft.innerText = parseInt(tryLeft.innerText) - 1;
-        }
-        else{
+        tryLeft.innerText = parseInt(tryLeft.innerText) - 1;
+        if(tryLeft.innerText == 0){
             document.getElementById('submit-btn').disabled = true;
         }
     }
